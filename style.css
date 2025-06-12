@@ -135,3 +135,18 @@ img.wp-smiley, img.emoji {
     max-width: 400px;
 }
 
+.student-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.student-gallery .student-video {
+    flex: 0 1 calc(33.333% - 20px);
+}
+@media (max-width: 768px) {
+    .student-gallery .student-video {
+        flex-basis: 100%;
+    }
+}
+
