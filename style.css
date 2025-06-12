@@ -134,6 +134,7 @@ img.wp-smiley, img.emoji {
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 .game-container #game-area {
     max-width: 100%;
@@ -142,7 +143,7 @@ img.wp-smiley, img.emoji {
 .game-container button { margin:5px; padding:10px 20px; }
 .game-container #timer { font-weight:bold; margin-bottom:10px; }
 #timer-bar { width:100%; height:10px; background:#eee; border-radius:5px; overflow:hidden; margin-bottom:15px; }
-#timer-progress { height:100%; width:0; background:#007cba; transition:width 1s linear; }
+#timer-progress { height:100%; width:0; background:#28a745; transition:width 1s linear; }
 .game-container #result { font-size:1.2em; margin-top:20px; }
 
 /* Student video gallery */
