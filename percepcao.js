@@ -27,10 +27,20 @@ const progressEl = document.getElementById('timer-progress');
 function startTimer() {
   startTime = Date.now();
   timerInterval = setInterval(() => {
-    const seconds = Math.floor((Date.now() - startTime) / 1000);
-    document.getElementById('timer').textContent = `Tempo: ${seconds}s`;
-    const progress = Math.min(seconds, 60) / 60 * 100;
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const minutes = Math.floor(elapsed / 60);
+    const seconds = elapsed % 60;
+    const progress = (seconds / 60) * 100;
+
     progressEl.style.width = progress + '%';
+
+    if (minutes > 0) {
+      const minLabel = minutes > 1 ? 'minutos' : 'minuto';
+      document.getElementById('timer').textContent =
+        `Tempo: ${minutes}:${seconds.toString().padStart(2, '0')} ${minLabel}`;
+    } else {
+      document.getElementById('timer').textContent = `Tempo: ${seconds}s`;
+    }
   }, 1000);
 }
 
@@ -73,6 +83,8 @@ function finishGame() {
 }
 
 function startGame() {
+  document.getElementById('intro').style.display = 'none';
+  document.getElementById('game-area').style.display = 'block';
   currentQuestion = 0;
   score = 0;
   startTimer();
@@ -96,4 +108,4 @@ document.querySelectorAll('#options button').forEach(btn => {
   });
 });
 
-window.addEventListener('load', startGame);
+document.getElementById('start-game').addEventListener('click', startGame);
