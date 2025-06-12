@@ -9,3 +9,12 @@
 .sun-icon {
   color: #FFD700;
 }
+
+#level-select button.selected {
+  background-color: #28a745;
+  color: #fff;
+}
+
+#end-buttons {
+  margin-top: 15px;
+}

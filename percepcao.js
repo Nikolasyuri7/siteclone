@@ -3,6 +3,14 @@ const chords = [
   { name: 'Menor', intervals: [0, 3, 7] }
 ];
 
+const levels = {
+  facil: [261.63],
+  medio: [261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 493.88],
+  dificil: Array.from({ length: 12 }, (_, i) => 261.63 * Math.pow(2, i / 12))
+};
+
+let currentLevel = 'facil';
+
 const totalQuestions = 10;
 let currentQuestion = 0;
 let score = 0;
@@ -73,7 +81,9 @@ function nextQuestion() {
   document.getElementById('feedback').textContent = '';
   currentChord = chords[Math.floor(Math.random() * chords.length)];
   document.getElementById('question').textContent = `Questão ${currentQuestion + 1} de ${totalQuestions}`;
-  playChord(currentChord.intervals);
+  const roots = levels[currentLevel] || levels.facil;
+  const root = roots[Math.floor(Math.random() * roots.length)];
+  playChord(currentChord.intervals, root);
 }
 
 function finishGame() {
@@ -83,13 +93,29 @@ function finishGame() {
   const resultEl = document.getElementById('result');
   resultEl.textContent = `Você acertou ${score} de ${totalQuestions} (${percentage}%) em ${totalTime}s.`;
   resultEl.style.color = percentage >= 60 ? 'green' : 'red';
+  const advice = document.createElement('p');
+  if (percentage < 80) {
+    advice.textContent = 'Recomendo treinar mais nesse nível antes de avançar.';
+  } else {
+    advice.textContent = 'Parabéns! Que tal subir de nível e tentar outro desafio?';
+  }
+  resultEl.insertAdjacentElement('afterend', advice);
   document.getElementById('options').style.display = 'none';
   document.getElementById('play-sound').style.display = 'none';
+  document.getElementById('end-buttons').style.display = 'block';
 }
 
 function startGame() {
   document.getElementById('intro').style.display = 'none';
   document.getElementById('game-area').style.display = 'block';
+  document.getElementById('end-buttons').style.display = 'none';
+  const resultEl = document.getElementById('result');
+  if (resultEl.nextElementSibling) {
+    resultEl.nextElementSibling.remove();
+  }
+  resultEl.textContent = '';
+  document.getElementById('options').style.display = 'block';
+  document.getElementById('play-sound').style.display = 'block';
   currentQuestion = 0;
   score = 0;
   startTimer();
@@ -116,4 +142,22 @@ document.querySelectorAll('#options button').forEach(btn => {
 document.getElementById('start-game').addEventListener('click', () => {
   getContext(); // unlock audio on mobile devices
   startGame();
+});
+
+document.querySelectorAll('#level-select button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentLevel = btn.dataset.level;
+    document.querySelectorAll('#level-select button').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  });
+});
+
+document.getElementById('retry-game').addEventListener('click', () => {
+  startGame();
+});
+
+document.getElementById('change-level').addEventListener('click', () => {
+  document.getElementById('game-area').style.display = 'none';
+  document.getElementById('intro').style.display = 'block';
+  document.getElementById('end-buttons').style.display = 'none';
 });

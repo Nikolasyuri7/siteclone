@@ -36,6 +36,12 @@ Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou men
         <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
         <p>🧠 Ao final de 10 perguntas, você verá o seu resultado.</p>
         <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
+        <div id="level-select">
+            <p>Escolha o nível do exercício:</p>
+            <button data-level="facil" class="wp-element-button">Fácil</button>
+            <button data-level="medio" class="wp-element-button">Médio</button>
+            <button data-level="dificil" class="wp-element-button">Difícil</button>
+        </div>
         <button id="start-game" class="wp-element-button">Iniciar</button>
     </div>
     <div id="game-area" style="display:none;">
@@ -49,6 +55,10 @@ Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou men
         </div>
         <p id="feedback"></p>
         <p id="result"></p>
+        <div id="end-buttons" style="display:none;">
+            <button id="retry-game" class="wp-element-button">&#x21bb;</button>
+            <button id="change-level" class="wp-element-button">&#9881;</button>
+        </div>
     </div>
 </main>
 </div>
