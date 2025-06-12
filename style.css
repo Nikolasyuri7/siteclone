@@ -107,3 +107,17 @@ img.wp-smiley, img.emoji {
 @font-face{font-family:"Source Serif Pro";font-style:normal;font-weight:200 900;font-display:fallback;src:url('https://nikolasyuri.com.br/wp-content/themes/extendable/assets/fonts/source-serif-pro/source-serif-pro.woff2') format('woff2');font-stretch:normal;}
 @font-face{font-family:"Space Mono";font-style:normal;font-weight:400;font-display:fallback;src:url('https://nikolasyuri.com.br/wp-content/themes/extendable/assets/fonts/space-mono/space-mono-regular.woff2') format('woff2');}
 @font-face{font-family:"Space Mono";font-style:normal;font-weight:700;font-display:fallback;src:url('https://nikolasyuri.com.br/wp-content/themes/extendable/assets/fonts/space-mono/space-mono-bold.woff2') format('woff2');}
+
+/* Navigation menu */
+.main-nav {
+  background:#333;
+  text-align:center;
+  padding:10px;
+}
+.main-nav ul { list-style:none; margin:0; padding:0; display:flex; justify-content:center; gap:20px; }
+.main-nav a { color:#fff; text-decoration:none; font-weight:bold; }
+.main-nav a:hover { text-decoration:underline; }
+
+/* Game styles */
+.game-container { text-align:center; padding:20px; }
+.game-container button { margin:5px; padding:10px 20px; }
