@@ -113,4 +113,7 @@ document.querySelectorAll('#options button').forEach(btn => {
   });
 });
 
-document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('start-game').addEventListener('click', () => {
+  getContext(); // unlock audio on mobile devices
+  startGame();
+});
