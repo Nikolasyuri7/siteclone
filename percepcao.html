@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="extendable-style.css" />
     <link rel="stylesheet" href="responsive.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="custom.css" />
 </head>
 <body>
 <div class="wp-site-blocks">
@@ -33,12 +34,7 @@
 Os acordes maiores costumam soar claros, alegres e abertos, enquanto os acordes menores têm um som mais triste, escuro e introspectivo.
 Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou menor.</p>
         <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
-        <p>🧠 Ao final de 10 perguntas, você verá o seu resultado:</p>
-        <ul>
-            <li>Quantos acordes você acertou</li>
-            <li>Quantos errou</li>
-            <li>E uma dica personalizada do que estudar para melhorar ainda mais sua percepção musical!</li>
-        </ul>
+        <p>🧠 Ao final de 10 perguntas, você verá o seu resultado.</p>
         <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
         <button id="start-game" class="wp-element-button">Iniciar</button>
     </div>
@@ -48,7 +44,7 @@ Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou men
         <p id="question"></p>
         <button id="play-sound" class="wp-element-button has-background">Repetir acorde</button>
         <div id="options">
-            <button data-type="Maior" class="wp-element-button">&#9728; Maior</button>
+            <button data-type="Maior" class="wp-element-button"><span class="sun-icon">&#9728;</span> Maior</button>
             <button data-type="Menor" class="wp-element-button">&#127769; Menor</button>
         </div>
         <p id="feedback"></p>
