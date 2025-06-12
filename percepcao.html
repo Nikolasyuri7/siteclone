@@ -27,16 +27,33 @@
 </nav>
 <main class="game-container">
     <h2>Treino de Percepção</h2>
-    <p id="timer">Tempo: 0s</p>
-    <div id="timer-bar"><div id="timer-progress"></div></div>
-    <p id="question"></p>
-    <button id="play-sound" class="wp-element-button has-background">Tocar acorde</button>
-    <div id="options">
-        <button data-type="Maior" class="wp-element-button">Maior</button>
-        <button data-type="Menor" class="wp-element-button">Menor</button>
+    <div id="intro">
+        <p>🎵 Bem-vindo ao Jogo de Percepção Musical! 🎵</p>
+        <p>Neste jogo, você vai treinar seu ouvido para reconhecer acordes maiores e menores.
+Os acordes maiores costumam soar claros, alegres e abertos, enquanto os acordes menores têm um som mais triste, escuro e introspectivo.
+Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou menor.</p>
+        <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
+        <p>🧠 Ao final de 10 perguntas, você verá o seu resultado:</p>
+        <ul>
+            <li>Quantos acordes você acertou</li>
+            <li>Quantos errou</li>
+            <li>E uma dica personalizada do que estudar para melhorar ainda mais sua percepção musical!</li>
+        </ul>
+        <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
+        <button id="start-game" class="wp-element-button">Iniciar</button>
     </div>
-    <p id="feedback"></p>
-    <p id="result"></p>
+    <div id="game-area" style="display:none;">
+        <p id="timer">Tempo: 0s</p>
+        <div id="timer-bar"><div id="timer-progress"></div></div>
+        <p id="question"></p>
+        <button id="play-sound" class="wp-element-button has-background">Tocar acorde</button>
+        <div id="options">
+            <button data-type="Maior" class="wp-element-button">Maior</button>
+            <button data-type="Menor" class="wp-element-button">Menor</button>
+        </div>
+        <p id="feedback"></p>
+        <p id="result"></p>
+    </div>
 </main>
 </div>
 <script src="percepcao.js"></script>
