@@ -141,6 +141,7 @@ img.wp-smiley, img.emoji {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
     border-radius: 10px;
 }
 .student-video .play-button,
@@ -162,12 +163,9 @@ img.wp-smiley, img.emoji {
     height: 60px;
     transform: translate(-50%, -50%);
 }
-.student-video .play-button::before {
-    content: '';
-    border-style: solid;
-    border-width: 12px 0 12px 18px;
-    border-color: transparent transparent transparent #fff;
-    margin-left: 3px;
+.student-video .play-button img {
+    width: 24px;
+    height: 24px;
 }
 .student-video .back-button {
     top: 10px;
@@ -189,9 +187,10 @@ img.wp-smiley, img.emoji {
     align-items: center;
 }
 .student-video figcaption img {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
     margin-top: 4px;
+    display: inline-block;
 }
 
 .student-gallery {
@@ -207,5 +206,9 @@ img.wp-smiley, img.emoji {
     .student-gallery .student-video {
         flex-basis: 100%;
     }
+}
+
+.feedback-section {
+    text-align: center;
 }
 
