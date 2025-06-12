@@ -125,6 +125,8 @@ img.wp-smiley, img.emoji {
 .game-container { text-align:center; padding:20px; }
 .game-container button { margin:5px; padding:10px 20px; }
 .game-container #timer { font-weight:bold; margin-bottom:10px; }
+#timer-bar { width:100%; height:10px; background:#eee; border-radius:5px; overflow:hidden; margin-bottom:15px; }
+#timer-progress { height:100%; width:0; background:#007cba; transition:width 1s linear; }
 .game-container #result { font-size:1.2em; margin-top:20px; }
 
 /* Student video gallery */
