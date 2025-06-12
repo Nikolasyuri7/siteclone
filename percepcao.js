@@ -9,9 +9,13 @@ let currentQuestion = 0;
 let score = 0;
 let currentChord = chords[0];
 
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+const context = new AudioCtx();
+
 function playChord(intervals, root = 261.63) {
-  const AudioCtx = window.AudioContext || window.webkitAudioContext;
-  const context = new AudioCtx();
+  if (context.state === 'suspended') {
+    context.resume();
+  }
   const now = context.currentTime;
   intervals.forEach(i => {
     const osc = context.createOscillator();
