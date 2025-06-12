@@ -1,0 +1,11 @@
+#start-game {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sun-icon {
+  color: #FFD700;
+}
