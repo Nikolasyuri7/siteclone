@@ -144,6 +144,10 @@ img.wp-smiley, img.emoji {
     object-position: top;
     border-radius: 10px;
 }
+.student-video video::-webkit-media-controls-start-playback-button {
+    display: none;
+    -webkit-appearance: none;
+}
 .student-video .play-button,
 .student-video .back-button {
     position: absolute;
