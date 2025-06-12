@@ -10,14 +10,27 @@ let currentChord = chords[0];
 let startTime;
 let timerInterval;
 
-const AudioCtx = window.AudioContext || window.webkitAudioContext;
-const context = new AudioCtx();
+let context;
+function getContext() {
+  if (!context) {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    context = new AudioCtx();
+  }
+  if (context.state === 'suspended') {
+    context.resume();
+  }
+  return context;
+}
+
+const progressEl = document.getElementById('timer-progress');
 
 function startTimer() {
   startTime = Date.now();
   timerInterval = setInterval(() => {
     const seconds = Math.floor((Date.now() - startTime) / 1000);
     document.getElementById('timer').textContent = `Tempo: ${seconds}s`;
+    const progress = Math.min(seconds, 60) / 60 * 100;
+    progressEl.style.width = progress + '%';
   }, 1000);
 }
 
@@ -27,14 +40,12 @@ function stopTimer() {
 }
 
 function playChord(intervals, root = 261.63) {
-  if (context.state === 'suspended') {
-    context.resume();
-  }
-  const now = context.currentTime;
+  const ctx = getContext();
+  const now = ctx.currentTime;
   intervals.forEach(i => {
-    const osc = context.createOscillator();
+    const osc = ctx.createOscillator();
     osc.frequency.value = root * Math.pow(2, i / 12);
-    osc.connect(context.destination);
+    osc.connect(ctx.destination);
     osc.start(now);
     osc.stop(now + 1.2);
   });
