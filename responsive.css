@@ -1,0 +1,15 @@
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+.wp-block-columns {
+    flex-wrap: wrap;
+}
+.wp-block-column {
+    flex-basis: 100%;
+}
+@media (min-width: 768px) {
+    .wp-block-column {
+        flex-basis: initial;
+    }
+}
