@@ -54,8 +54,12 @@ function playChord(intervals, root = 261.63) {
   const now = ctx.currentTime;
   intervals.forEach(i => {
     const osc = ctx.createOscillator();
+    osc.type = 'sine';
     osc.frequency.value = root * Math.pow(2, i / 12);
-    osc.connect(ctx.destination);
+    const gain = ctx.createGain();
+    gain.gain.value = 0.2;
+    osc.connect(gain);
+    gain.connect(ctx.destination);
     osc.start(now);
     osc.stop(now + 1.2);
   });
@@ -69,6 +73,7 @@ function nextQuestion() {
   document.getElementById('feedback').textContent = '';
   currentChord = chords[Math.floor(Math.random() * chords.length)];
   document.getElementById('question').textContent = `Questão ${currentQuestion + 1} de ${totalQuestions}`;
+  playChord(currentChord.intervals);
 }
 
 function finishGame() {
@@ -104,7 +109,7 @@ document.querySelectorAll('#options button').forEach(btn => {
       document.getElementById('feedback').textContent = `Errado! O acorde era ${currentChord.name}.`;
     }
     currentQuestion++;
-    setTimeout(nextQuestion, 1000);
+    nextQuestion();
   });
 });
 
