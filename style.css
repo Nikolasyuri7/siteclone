@@ -124,3 +124,14 @@ img.wp-smiley, img.emoji {
 /* Game styles */
 .game-container { text-align:center; padding:20px; }
 .game-container button { margin:5px; padding:10px 20px; }
+
+/* Student video gallery */
+.student-video {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.student-video video {
+    width: 100%;
+    max-width: 400px;
+}
+
