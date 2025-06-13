@@ -10,7 +10,39 @@ const levels = {
   avancado: Array.from({ length: 12 }, (_, i) => 261.63 * Math.pow(2, i / 12))
 };
 
+const levelData = [
+  {
+    key: 'facil',
+    class: 'easy',
+    label: 'Fácil',
+    description:
+      'Ideal para começar!<br>Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.<br>Comece a treinar seu ouvido com diferenças simples, mas fundamentais.'
+  },
+  {
+    key: 'medio',
+    class: 'medium',
+    label: 'Médio',
+    description:
+      'Hora de expandir seu ouvido!<br>Além dos acordes Maiores e Menores, você vai ouvir também os Diminutos (C°) e Aumentados (C+).<br>Eles têm sonoridades bem marcantes e interessantes — um passo além, sem perder a diversão.'
+  },
+  {
+    key: 'dificil',
+    class: 'hard',
+    label: 'Difícil',
+    description:
+      'Aqui as coisas ficam mais sofisticadas!<br>Você terá todos os acordes anteriores, e também acordes com sétima maior (C7M) e sétima menor (C7).<br>Desafio ideal pra quem já tem uma boa noção de acordes e quer afiar ainda mais o ouvido.'
+  },
+  {
+    key: 'avancado',
+    class: 'advanced',
+    label: 'Avançado',
+    description:
+      'Desbloqueie seu ouvido completo!<br>Neste nível, entram acordes menores com sétima maior (Cm7M) e menores com sétima menor (Cm7), além de todos os anteriores.<br>Um verdadeiro laboratório auditivo — para quem quer dominar as cores e nuances dos acordes!'
+  }
+];
+
 let currentLevel = 'facil';
+let currentLevelIndex = 0;
 
 const totalQuestions = 10;
 let currentQuestion = 0;
@@ -32,6 +64,18 @@ function getContext() {
 }
 
 const progressEl = document.getElementById('timer-progress');
+const levelButton = document.querySelector('#level-display .level-btn');
+const levelDesc = document.querySelector('#level-display .level-description');
+
+function renderLevel() {
+  const info = levelData[currentLevelIndex];
+  levelButton.dataset.level = info.key;
+  levelButton.textContent = info.label;
+  levelButton.className = `wp-element-button level-btn ${info.class}`;
+  levelDesc.innerHTML = info.description;
+}
+
+renderLevel();
 
 function startTimer() {
   startTime = Date.now();
@@ -143,6 +187,10 @@ document.querySelectorAll('#options button').forEach(btn => {
 document.getElementById('select-difficulty').addEventListener('click', () => {
   document.getElementById('level-select').style.display = 'block';
   document.getElementById('select-difficulty').style.display = 'none';
+  currentLevelIndex = 0;
+  levelButton.classList.remove('selected');
+  document.getElementById('start-game').style.display = 'none';
+  renderLevel();
 });
 
 document.getElementById('start-game').addEventListener('click', () => {
@@ -150,13 +198,24 @@ document.getElementById('start-game').addEventListener('click', () => {
   startGame();
 });
 
-document.querySelectorAll('#level-select .level-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    currentLevel = btn.dataset.level;
-    document.querySelectorAll('#level-select .level-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    document.getElementById('start-game').style.display = 'block';
-  });
+document.getElementById('prev-level').addEventListener('click', () => {
+  currentLevelIndex = (currentLevelIndex - 1 + levelData.length) % levelData.length;
+  levelButton.classList.remove('selected');
+  document.getElementById('start-game').style.display = 'none';
+  renderLevel();
+});
+
+document.getElementById('next-level').addEventListener('click', () => {
+  currentLevelIndex = (currentLevelIndex + 1) % levelData.length;
+  levelButton.classList.remove('selected');
+  document.getElementById('start-game').style.display = 'none';
+  renderLevel();
+});
+
+levelButton.addEventListener('click', () => {
+  currentLevel = levelButton.dataset.level;
+  levelButton.classList.add('selected');
+  document.getElementById('start-game').style.display = 'block';
 });
 
 document.getElementById('retry-game').addEventListener('click', () => {
@@ -170,5 +229,7 @@ document.getElementById('change-level').addEventListener('click', () => {
   document.getElementById('select-difficulty').style.display = 'block';
   document.getElementById('level-select').style.display = 'none';
   document.getElementById('start-game').style.display = 'none';
-  document.querySelectorAll('#level-select .level-btn').forEach(b => b.classList.remove('selected'));
+  levelButton.classList.remove('selected');
+  currentLevelIndex = 0;
+  renderLevel();
 });

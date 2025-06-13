@@ -74,3 +74,21 @@
   height: 1em;
   margin-right: 5px;
 }
+
+#level-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#level-display {
+  text-align: center;
+}
+
+.nav-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

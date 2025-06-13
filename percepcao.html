@@ -39,14 +39,14 @@ Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou men
         <button id="select-difficulty" class="wp-element-button">Selecionar dificuldade</button>
         <div id="level-select" style="display:none;">
             <p>Escolha o nível do exercício:</p>
-            <button data-level="facil" class="wp-element-button level-btn easy">Fácil</button>
-            <p class="level-description">Ideal para começar!<br>Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.<br>Comece a treinar seu ouvido com diferenças simples, mas fundamentais.</p>
-            <button data-level="medio" class="wp-element-button level-btn medium">Médio</button>
-            <p class="level-description">Hora de expandir seu ouvido!<br>Além dos acordes Maiores e Menores, você vai ouvir também os Diminutos (C°) e Aumentados (C+).<br>Eles têm sonoridades bem marcantes e interessantes — um passo além, sem perder a diversão.</p>
-            <button data-level="dificil" class="wp-element-button level-btn hard">Difícil</button>
-            <p class="level-description">Aqui as coisas ficam mais sofisticadas!<br>Você terá todos os acordes anteriores, e também acordes com sétima maior (C7M) e sétima menor (C7).<br>Desafio ideal pra quem já tem uma boa noção de acordes e quer afiar ainda mais o ouvido.</p>
-            <button data-level="avancado" class="wp-element-button level-btn advanced">Avançado</button>
-            <p class="level-description">Desbloqueie seu ouvido completo!<br>Neste nível, entram acordes menores com sétima maior (Cm7M) e menores com sétima menor (Cm7), além de todos os anteriores.<br>Um verdadeiro laboratório auditivo — para quem quer dominar as cores e nuances dos acordes!</p>
+            <div id="level-carousel">
+                <button id="prev-level" class="wp-element-button nav-btn">&#9664;</button>
+                <div id="level-display">
+                    <button data-level="facil" class="wp-element-button level-btn easy">Fácil</button>
+                    <p class="level-description">Ideal para começar!<br>Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.<br>Comece a treinar seu ouvido com diferenças simples, mas fundamentais.</p>
+                </div>
+                <button id="next-level" class="wp-element-button nav-btn">&#9654;</button>
+            </div>
             <button id="start-game" class="wp-element-button" style="display:none;">Iniciar</button>
         </div>
     </div>
