@@ -46,6 +46,11 @@
   color: #fff;
 }
 
+.advanced {
+  background-color: #6f42c1;
+  color: #fff;
+}
+
 .level-description {
   margin-bottom: 10px;
 }
