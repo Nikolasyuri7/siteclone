@@ -55,6 +55,30 @@
 
 .level-description {
   margin-bottom: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  text-align: left;
+}
+
+#level-display .level-btn.easy + .level-description {
+  background-color: #28a745;
+  color: #fff;
+}
+
+#level-display .level-btn.medium + .level-description {
+  background-color: #ffc107;
+  color: #000;
+}
+
+#level-display .level-btn.hard + .level-description {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+#level-display .level-btn.advanced + .level-description {
+  background-color: #6f42c1;
+  color: #fff;
 }
 
 #end-buttons {
