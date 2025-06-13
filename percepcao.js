@@ -52,7 +52,7 @@ let startTime;
 let timerInterval;
 
 let context;
-let progressEl, levelButton, levelDesc;
+let progressEl, levelButton, levelDesc, startButton;
 function getContext() {
   if (!context) {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -68,6 +68,7 @@ function getContext() {
 function renderLevel() {
   const info = levelData[currentLevelIndex];
   levelButton.dataset.level = info.key;
+  levelButton.dataset.color = info.class;
   levelButton.textContent = info.label;
   levelButton.className = `wp-element-button level-btn ${info.class}`;
   levelDesc.innerHTML = info.description;
@@ -168,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   progressEl = document.getElementById('timer-progress');
   levelButton = document.querySelector('#level-display .level-btn');
   levelDesc = document.querySelector('#level-display .level-description');
+  startButton = document.getElementById('start-game');
   renderLevel();
 
   document.getElementById('play-sound').addEventListener('click', () => {
@@ -192,11 +194,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('select-difficulty').style.display = 'none';
     currentLevelIndex = 0;
     levelButton.classList.remove('selected');
-    document.getElementById('start-game').style.display = 'none';
+    startButton.style.display = 'none';
+    startButton.className = 'wp-element-button';
     renderLevel();
   });
 
-  document.getElementById('start-game').addEventListener('click', () => {
+  startButton.addEventListener('click', () => {
     getContext(); // unlock audio on mobile devices
     startGame();
   });
@@ -204,21 +207,24 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('prev-level').addEventListener('click', () => {
     currentLevelIndex = (currentLevelIndex - 1 + levelData.length) % levelData.length;
     levelButton.classList.remove('selected');
-    document.getElementById('start-game').style.display = 'none';
+    startButton.style.display = 'none';
+    startButton.className = 'wp-element-button';
     renderLevel();
   });
 
   document.getElementById('next-level').addEventListener('click', () => {
     currentLevelIndex = (currentLevelIndex + 1) % levelData.length;
     levelButton.classList.remove('selected');
-    document.getElementById('start-game').style.display = 'none';
+    startButton.style.display = 'none';
+    startButton.className = 'wp-element-button';
     renderLevel();
   });
 
   levelButton.addEventListener('click', () => {
     currentLevel = levelButton.dataset.level;
     levelButton.classList.add('selected');
-    document.getElementById('start-game').style.display = 'block';
+    startButton.className = `wp-element-button ${levelButton.dataset.color}`;
+    startButton.style.display = 'block';
   });
 
   document.getElementById('retry-game').addEventListener('click', () => {
@@ -231,7 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('end-buttons').style.display = 'none';
     document.getElementById('select-difficulty').style.display = 'block';
     document.getElementById('level-select').style.display = 'none';
-    document.getElementById('start-game').style.display = 'none';
+    startButton.style.display = 'none';
+    startButton.className = 'wp-element-button';
     levelButton.classList.remove('selected');
     currentLevelIndex = 0;
     renderLevel();
