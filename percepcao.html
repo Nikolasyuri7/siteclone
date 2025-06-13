@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Treino de Percepção</title>
   <link rel="stylesheet" href="custom.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     :root {
       --verde: #1f5d3e;
@@ -124,10 +125,17 @@
   </style>
 </head>
 <body>
+  <nav class="main-nav"><ul><li><a href="index.html">Início</a></li><li><a href="percepcao.html">Percepção</a></li></ul></nav>
   <div class="titulo">🎵 Treino de Percepção</div>
 
   <div id="intro">
-    <div id="level-select">
+    <p>🎵 Bem-vindo ao Jogo de Percepção Musical! 🎵</p>
+    <p>Neste jogo, você vai treinar seu ouvido para reconhecer acordes maiores e menores. Os acordes maiores costumam soar claros, alegres e abertos, enquanto os acordes menores têm um som mais triste, escuro e introspectivo. Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou menor.</p>
+    <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
+    <p>🧠 Ao final de 10 perguntas, você verá o seu resultado.</p>
+    <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
+    <button id="select-difficulty" class="wp-element-button">Selecionar nível</button>
+    <div id="level-select" style="display:none;">
       <div id="level-carousel" class="botoes-navegacao">
         <div id="prev-level" class="seta-esquerda nav-btn">&#9664;</div>
         <div id="level-display" class="nivel-box" style="border-left: 5px solid var(--verde)">
@@ -136,9 +144,8 @@
         </div>
         <div id="next-level" class="seta-direita nav-btn">&#9654;</div>
       </div>
-      <button id="start-game" class="wp-element-button">Iniciar</button>
+      <button id="start-game" class="wp-element-button" style="display:none;">Iniciar</button>
     </div>
-    <button id="select-difficulty" style="display:none;"></button>
   </div>
 
   <div id="game-area" class="jogo" style="display:none;">
