@@ -139,16 +139,22 @@ document.querySelectorAll('#options button').forEach(btn => {
   });
 });
 
+document.getElementById('select-difficulty').addEventListener('click', () => {
+  document.getElementById('level-select').style.display = 'block';
+  document.getElementById('select-difficulty').style.display = 'none';
+});
+
 document.getElementById('start-game').addEventListener('click', () => {
   getContext(); // unlock audio on mobile devices
   startGame();
 });
 
-document.querySelectorAll('#level-select button').forEach(btn => {
+document.querySelectorAll('#level-select .level-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     currentLevel = btn.dataset.level;
-    document.querySelectorAll('#level-select button').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('#level-select .level-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
+    document.getElementById('start-game').style.display = 'block';
   });
 });
 
@@ -160,4 +166,8 @@ document.getElementById('change-level').addEventListener('click', () => {
   document.getElementById('game-area').style.display = 'none';
   document.getElementById('intro').style.display = 'block';
   document.getElementById('end-buttons').style.display = 'none';
+  document.getElementById('select-difficulty').style.display = 'block';
+  document.getElementById('level-select').style.display = 'none';
+  document.getElementById('start-game').style.display = 'none';
+  document.querySelectorAll('#level-select .level-btn').forEach(b => b.classList.remove('selected'));
 });
