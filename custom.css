@@ -1,6 +1,4 @@
 #start-game {
-  background-color: #28a745;
-  color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -21,8 +19,7 @@
 }
 
 #level-select button.selected {
-  background-color: #28a745;
-  color: #fff;
+  outline: 2px solid #fff;
 }
 
 .level-btn {
