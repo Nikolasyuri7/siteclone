@@ -52,6 +52,7 @@ let startTime;
 let timerInterval;
 
 let context;
+let progressEl, levelButton, levelDesc;
 function getContext() {
   if (!context) {
     const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -63,9 +64,6 @@ function getContext() {
   return context;
 }
 
-const progressEl = document.getElementById('timer-progress');
-const levelButton = document.querySelector('#level-display .level-btn');
-const levelDesc = document.querySelector('#level-display .level-description');
 
 function renderLevel() {
   const info = levelData[currentLevelIndex];
@@ -75,7 +73,6 @@ function renderLevel() {
   levelDesc.innerHTML = info.description;
 }
 
-renderLevel();
 
 function startTimer() {
   startTime = Date.now();
@@ -167,69 +164,84 @@ function startGame() {
   nextQuestion();
 }
 
-document.getElementById('play-sound').addEventListener('click', () => {
-  playChord(currentChord.intervals);
-});
+document.addEventListener('DOMContentLoaded', () => {
+  progressEl = document.getElementById('timer-progress');
+  levelButton = document.querySelector('#level-display .level-btn');
+  levelDesc = document.querySelector('#level-display .level-description');
+  renderLevel();
 
-document.querySelectorAll('#options button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (btn.dataset.type === currentChord.name) {
-      score++;
-      document.getElementById('feedback').textContent = `Correto! O acorde era ${currentChord.name}.`;
-    } else {
-      document.getElementById('feedback').textContent = `Errado! O acorde era ${currentChord.name}.`;
-    }
-    currentQuestion++;
-    nextQuestion();
+  document.getElementById('play-sound').addEventListener('click', () => {
+    playChord(currentChord.intervals);
   });
-});
 
-document.getElementById('select-difficulty').addEventListener('click', () => {
-  document.getElementById('level-select').style.display = 'block';
-  document.getElementById('select-difficulty').style.display = 'none';
-  currentLevelIndex = 0;
-  levelButton.classList.remove('selected');
-  document.getElementById('start-game').style.display = 'none';
-  renderLevel();
-});
+  document.querySelectorAll('#options button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.type === currentChord.name) {
+        score++;
+        document.getElementById('feedback').textContent = `Correto! O acorde era ${currentChord.name}.`;
+      } else {
+        document.getElementById('feedback').textContent = `Errado! O acorde era ${currentChord.name}.`;
+      }
+      currentQuestion++;
+      nextQuestion();
+    });
+  });
 
-document.getElementById('start-game').addEventListener('click', () => {
-  getContext(); // unlock audio on mobile devices
-  startGame();
-});
+  document.getElementById('select-difficulty').addEventListener('click', () => {
+    document.getElementById('level-select').style.display = 'block';
+    document.getElementById('select-difficulty').style.display = 'none';
+    currentLevelIndex = 0;
+    levelButton.classList.remove('selected');
+    document.getElementById('start-game').style.display = 'none';
+    renderLevel();
+  });
 
-document.getElementById('prev-level').addEventListener('click', () => {
-  currentLevelIndex = (currentLevelIndex - 1 + levelData.length) % levelData.length;
-  levelButton.classList.remove('selected');
-  document.getElementById('start-game').style.display = 'none';
-  renderLevel();
-});
+  document.getElementById('start-game').addEventListener('click', () => {
+    getContext(); // unlock audio on mobile devices
+    startGame();
+  });
 
-document.getElementById('next-level').addEventListener('click', () => {
-  currentLevelIndex = (currentLevelIndex + 1) % levelData.length;
-  levelButton.classList.remove('selected');
-  document.getElementById('start-game').style.display = 'none';
-  renderLevel();
-});
+  document.getElementById('prev-level').addEventListener('click', () => {
+    currentLevelIndex = (currentLevelIndex - 1 + levelData.length) % levelData.length;
+    levelButton.classList.remove('selected');
+    document.getElementById('start-game').style.display = 'none';
+    renderLevel();
+  });
 
-levelButton.addEventListener('click', () => {
-  currentLevel = levelButton.dataset.level;
-  levelButton.classList.add('selected');
-  document.getElementById('start-game').style.display = 'block';
-});
+  document.getElementById('next-level').addEventListener('click', () => {
+    currentLevelIndex = (currentLevelIndex + 1) % levelData.length;
+    levelButton.classList.remove('selected');
+    document.getElementById('start-game').style.display = 'none';
+    renderLevel();
+  });
 
-document.getElementById('retry-game').addEventListener('click', () => {
-  startGame();
-});
+  levelButton.addEventListener('click', () => {
+    currentLevel = levelButton.dataset.level;
+    levelButton.classList.add('selected');
+    document.getElementById('start-game').style.display = 'block';
+  });
 
-document.getElementById('change-level').addEventListener('click', () => {
-  document.getElementById('game-area').style.display = 'none';
-  document.getElementById('intro').style.display = 'block';
-  document.getElementById('end-buttons').style.display = 'none';
-  document.getElementById('select-difficulty').style.display = 'block';
-  document.getElementById('level-select').style.display = 'none';
-  document.getElementById('start-game').style.display = 'none';
-  levelButton.classList.remove('selected');
-  currentLevelIndex = 0;
-  renderLevel();
+  document.getElementById('retry-game').addEventListener('click', () => {
+    startGame();
+  });
+
+  document.getElementById('change-level').addEventListener('click', () => {
+    document.getElementById('game-area').style.display = 'none';
+    document.getElementById('intro').style.display = 'block';
+    document.getElementById('end-buttons').style.display = 'none';
+    document.getElementById('select-difficulty').style.display = 'block';
+    document.getElementById('level-select').style.display = 'none';
+    document.getElementById('start-game').style.display = 'none';
+    levelButton.classList.remove('selected');
+    currentLevelIndex = 0;
+    renderLevel();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') {
+      document.getElementById('next-level').click();
+    } else if (e.key === 'ArrowLeft') {
+      document.getElementById('prev-level').click();
+    }
+  });
 });

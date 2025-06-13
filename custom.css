@@ -5,6 +5,8 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
+  margin: 10px auto;
 }
 #select-difficulty {
   background-color: #28a745;
