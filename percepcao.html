@@ -36,13 +36,17 @@ Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou men
         <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
         <p>🧠 Ao final de 10 perguntas, você verá o seu resultado.</p>
         <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
-        <div id="level-select">
+        <button id="select-difficulty" class="wp-element-button">Selecionar dificuldade</button>
+        <div id="level-select" style="display:none;">
             <p>Escolha o nível do exercício:</p>
-            <button data-level="facil" class="wp-element-button">Fácil</button>
-            <button data-level="medio" class="wp-element-button">Médio</button>
-            <button data-level="dificil" class="wp-element-button">Difícil</button>
+            <button data-level="facil" class="wp-element-button level-btn easy">Fácil</button>
+            <p class="level-description">Serão tocados somente acordes maiores e menores.</p>
+            <button data-level="medio" class="wp-element-button level-btn medium">Médio</button>
+            <p class="level-description">Serão tocados acordes Maiores, Menores, Diminutos e Aumentados.</p>
+            <button data-level="dificil" class="wp-element-button level-btn hard">Difícil</button>
+            <p class="level-description">Os acordes poderão ser tétrades também, serão tocados acordes Maiores, Menores, Diminutos, Aumentados, Maiores com 7M, Maiores com 7m, Menores com 7M e Menores com 7m.</p>
+            <button id="start-game" class="wp-element-button" style="display:none;">Iniciar</button>
         </div>
-        <button id="start-game" class="wp-element-button">Iniciar</button>
     </div>
     <div id="game-area" style="display:none;">
         <p id="timer">Tempo: 0s</p>
