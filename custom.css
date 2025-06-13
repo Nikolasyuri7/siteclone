@@ -17,4 +17,20 @@
 
 #end-buttons {
   margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+#play-sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+#play-sound img {
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
 }
