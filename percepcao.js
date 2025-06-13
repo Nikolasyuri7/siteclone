@@ -6,7 +6,8 @@ const chords = [
 const levels = {
   facil: [261.63],
   medio: [261.63, 293.66, 329.63, 349.23, 392.0, 440.0, 493.88],
-  dificil: Array.from({ length: 12 }, (_, i) => 261.63 * Math.pow(2, i / 12))
+  dificil: Array.from({ length: 12 }, (_, i) => 261.63 * Math.pow(2, i / 12)),
+  avancado: Array.from({ length: 12 }, (_, i) => 261.63 * Math.pow(2, i / 12))
 };
 
 let currentLevel = 'facil';
