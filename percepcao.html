@@ -12,7 +12,7 @@
       --laranja: #c7791a;
       --vermelho: #a92626;
       --roxo: #6d28d9;
-      --claro: #3a3a3a;
+      --claro: #bbbbbb;
     }
 
     body {
@@ -36,8 +36,8 @@
 
     .nivel-box {
       backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 1rem;
       padding: 2rem;
       text-align: center;
@@ -101,7 +101,7 @@
     .progresso-inner {
       height: 100%;
       background: #fff;
-      width: 30%; /* exemplo */
+      width: 30%;
     }
 
     .tempo {
@@ -155,12 +155,12 @@
       <div id="timer-progress" class="progresso-inner"></div>
     </div>
 
-    <div id="timer" class="tempo">⏲ <span>0:00</span></div>
+    <div id="timer" class="tempo"><span class="timer-icon">🕒</span> <span id="timer-text">0:00</span></div>
 
     <button id="play-sound" class="btn-repetir wp-element-button">🔁 Repetir Acorde</button>
 
     <div id="options" class="botoes-jogo">
-      <button data-type="Maior" class="wp-element-button">☀ Maior</button>
+      <button data-type="Maior" class="wp-element-button">☀️ Maior</button>
       <button data-type="Menor" class="wp-element-button">🌙 Menor</button>
     </div>
 
