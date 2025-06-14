@@ -4,216 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Treino de Percepção</title>
-  <link rel="stylesheet" href="custom.css" />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    :root {
-      --verde: #1f5d3e;
-      --laranja: #c7791a;
-      --vermelho: #a92626;
-      --roxo: #6d28d9;
-      --claro: #bbbbbb;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0e0e0e url('background-notas-musicais.png') no-repeat center center/cover;
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-
-    .titulo {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .nivel-box {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      max-width: 400px;
-      width: 100%;
-      margin: 1rem auto;
-    }
-
-    .nivel-nome {
-      font-size: 1.5rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .descricao-nivel {
-      margin-top: 1rem;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.95rem;
-    }
-
-    .botoes-navegacao {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-
-    .wp-element-button {
-      border: none;
-      padding: 0.8rem 2rem;
-      font-size: 1.2rem;
-      border-radius: 1rem;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .jogo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .pontuacao {
-      font-size: 1.2rem;
-    }
-
-    .progresso {
-      width: 200px;
-      height: 8px;
-      background: #3a3a3a;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .progresso-inner {
-      height: 100%;
-      background: #fff;
-      width: 30%;
-    }
-
-    .tempo {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 1rem;
-      opacity: 0.8;
-    }
-
-    .botoes-jogo button {
-      background: #222;
-      color: #fff;
-      padding: 1rem 2rem;
-      border: none;
-      border-radius: 10px;
-      margin: 0.5rem;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .easy {
-      background-color: #1f5d3e !important;
-    }
-
-    .medium {
-      background-color: #c7791a !important;
-    }
-
-    .hard {
-      background-color: #a92626 !important;
-    }
-
-    .advanced {
-      background-color: #6d28d9 !important;
-    }
-
-    #play-sound {
-      background-color: #facc15;
-      color: #000;
-    }
-
-    .nav-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 2rem;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    #intro p {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 500px) {
-      .nivel-box {
-        max-width: 90vw;
-        width: 100%;
-      }
-    }
-  </style>
+  <script defer src="percepcao.js"></script>
 </head>
 <body>
-  <nav class="main-nav"><ul><li><a href="index.html">Início</a></li><li><a href="percepcao.html">Percepção</a></li></ul></nav>
-  <div class="titulo">🎵 Treino de Percepção</div>
+  <h1>🎵 Treino de Percepção</h1>
+  <h2>Selecione o nível</h2>
 
-  <div id="intro">
-    <p>🎵 Bem-vindo ao Jogo de Percepção Musical! 🎵</p>
-    <p>Neste jogo, você vai treinar seu ouvido para reconhecer acordes maiores e menores. Os acordes maiores costumam soar claros, alegres e abertos, enquanto os acordes menores têm um som mais triste, escuro e introspectivo. Seu desafio é simples: ouça atentamente e descubra se o acorde é maior ou menor.</p>
-    <p>⏱️ O tempo de cada partida será contado, assim você pode acompanhar sua evolução e tentar melhorar sua agilidade a cada nova tentativa.</p>
-    <p>🧠 Ao final de 10 perguntas, você verá o seu resultado.</p>
-    <p>Prepare seu ouvido, respire fundo e... vamos começar! 🎧</p>
-    <button id="select-difficulty" class="wp-element-button">Selecionar nível</button>
-    <div id="level-select" style="display:none;">
-      <div id="level-carousel" class="botoes-navegacao">
-        <div id="prev-level" class="seta-esquerda nav-btn">&#9664;</div>
-        <div id="level-display" class="nivel-box" style="border-left: 5px solid var(--verde)">
-          <button data-level="facil" class="nivel-nome level-btn easy wp-element-button">🎵 <span>Fácil</span></button>
-          <div class="descricao-nivel level-description">Treine sua percepção com acordes maiores e menores. Ideal para iniciantes.</div>
-        </div>
-        <div id="next-level" class="seta-direita nav-btn">&#9654;</div>
+  <div class="nivel-container">
+    <div class="seta" onclick="trocarNivel(-1)">&#9664;</div>
+    <div id="nivel-card" class="card-nivel">
+      <div id="nivel-badge" class="tag-nivel facil">🎹 Fácil</div>
+      <div id="nivel-titulo" class="subtitulo">Ideal para começar!</div>
+      <div id="nivel-descricao" class="descricao">
+        Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.
+        Comece a treinar seu ouvido com diferenças simples, mas fundamentais.
       </div>
-      <button id="start-game" class="wp-element-button" style="display:none;">Iniciar</button>
+      <button id="btn-iniciar" class="btn-iniciar facil">Iniciar</button>
+    </div>
+    <div class="seta" onclick="trocarNivel(1)">&#9654;</div>
+  </div>
+
+  <div class="explicacao-container">
+    <div class="card-nivel explicacao">
+      <div class="subtitulo">Como funciona o jogo?</div>
+      <div class="descricao">
+        Você vai ouvir acordes e deverá escolher se o acorde é “Maior” (☀️) ou “Menor” (🌙).<br />
+        Cada rodada mostra a pontuação (ex: 3/10), um cronômetro 🕒, e você pode repetir o acorde com o botão 🔁.<br />
+        Ao final do jogo, seu desempenho será exibido.
+      </div>
     </div>
   </div>
 
-  <div id="game-area" class="jogo" style="display:none;">
-    <div id="question" class="pontuacao">1 / 10</div>
-
-    <div id="timer-bar" class="progresso">
-      <div id="timer-progress" class="progresso-inner"></div>
-    </div>
-
-    <div id="timer" class="tempo"><span class="timer-icon">🕒</span> <span id="timer-text">0:00</span></div>
-
-    <button id="play-sound" class="btn-repetir wp-element-button">🔁 Repetir Acorde</button>
-
-    <div id="options" class="botoes-jogo">
-      <button data-type="Maior" class="wp-element-button">☀️ Maior</button>
-      <button data-type="Menor" class="wp-element-button">🌙 Menor</button>
-    </div>
-
-    <p id="feedback"></p>
-    <p id="result"></p>
-    <div id="end-buttons" style="display:none;">
-      <button id="retry-game" class="wp-element-button">🔄 Refazer exercício</button>
-      <button id="change-level" class="wp-element-button">⚙️ Mudar de nível</button>
-    </div>
+  <div class="botoes-jogo">
+    <button class="glass-btn">🔁 Repetir Acorde</button>
+    <button class="glass-btn">☀️ Maior</button>
+    <button class="glass-btn">🌙 Menor</button>
   </div>
-
-  <script src="percepcao.js"></script>
 </body>
 </html>
