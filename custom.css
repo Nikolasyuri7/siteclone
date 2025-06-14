@@ -7,7 +7,7 @@
   margin: 10px auto;
 }
 #select-difficulty {
-  background-color: #28a745;
+  background-color: #1f5d3e;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -31,22 +31,22 @@
 }
 
 .easy {
-  background-color: #28a745;
+  background-color: #1f5d3e;
   color: #fff;
 }
 
 .medium {
-  background-color: #ffc107;
-  color: #000;
+  background-color: #c7791a;
+  color: #fff;
 }
 
 .hard {
-  background-color: #dc3545;
+  background-color: #a92626;
   color: #fff;
 }
 
 .advanced {
-  background-color: #6f42c1;
+  background-color: #6d28d9;
   color: #fff;
 }
 
@@ -59,22 +59,22 @@
 }
 
 #level-display .level-btn.easy + .level-description {
-  background-color: #28a745;
+  background-color: #1f5d3e;
   color: #fff;
 }
 
 #level-display .level-btn.medium + .level-description {
-  background-color: #ffc107;
-  color: #000;
+  background-color: #c7791a;
+  color: #fff;
 }
 
 #level-display .level-btn.hard + .level-description {
-  background-color: #dc3545;
+  background-color: #a92626;
   color: #fff;
 }
 
 #level-display .level-btn.advanced + .level-description {
-  background-color: #6f42c1;
+  background-color: #6d28d9;
   color: #fff;
 }
 

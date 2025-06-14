@@ -85,12 +85,11 @@ function startTimer() {
 
     progressEl.style.width = progress + '%';
 
+    const timerText = document.getElementById('timer-text');
     if (minutes > 0) {
-      const minLabel = minutes > 1 ? 'minutos' : 'minuto';
-      document.getElementById('timer').textContent =
-        `Tempo: ${minutes}:${seconds.toString().padStart(2, '0')} ${minLabel}`;
+      timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
     } else {
-      document.getElementById('timer').textContent = `Tempo: ${seconds}s`;
+      timerText.textContent = `0:${seconds.toString().padStart(2, '0')}`;
     }
   }, 1000);
 }
@@ -123,7 +122,7 @@ function nextQuestion() {
   }
   document.getElementById('feedback').textContent = '';
   currentChord = chords[Math.floor(Math.random() * chords.length)];
-  document.getElementById('question').textContent = `Questão ${currentQuestion + 1} de ${totalQuestions}`;
+  document.getElementById('question').textContent = `${currentQuestion + 1} / ${totalQuestions}`;
   const roots = levels[currentLevel] || levels.facil;
   const root = roots[Math.floor(Math.random() * roots.length)];
   playChord(currentChord.intervals, root);
