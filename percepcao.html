@@ -5,41 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Treino de Percepção</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="custom.css" />
   <script defer src="percepcao.js"></script>
 </head>
 <body>
   <h1>🎵 Treino de Percepção</h1>
   <h2>Selecione o nível</h2>
 
-  <div class="nivel-container">
-    <div class="seta" onclick="trocarNivel(-1)">&#9664;</div>
-    <div id="nivel-card" class="card-nivel">
-      <div id="nivel-badge" class="tag-nivel facil">🎹 Fácil</div>
-      <div id="nivel-titulo" class="subtitulo">Ideal para começar!</div>
-      <div id="nivel-descricao" class="descricao">
-        Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.
-        Comece a treinar seu ouvido com diferenças simples, mas fundamentais.
+  <div id="intro">
+    <div class="nivel-container">
+      <div class="seta" id="prev-level">&#9664;</div>
+      <div id="nivel-card" class="card-nivel">
+        <div id="nivel-badge" class="tag-nivel facil">🎹 Fácil</div>
+        <div id="nivel-titulo" class="subtitulo">Ideal para começar!</div>
+        <div id="nivel-descricao" class="descricao">
+          Você vai ouvir acordes Maiores (C) e Menores (Cm) — os dois pilares da harmonia.
+          Comece a treinar seu ouvido com diferenças simples, mas fundamentais.
+        </div>
+        <button id="btn-iniciar" class="btn-iniciar facil">Iniciar</button>
       </div>
-      <button id="btn-iniciar" class="btn-iniciar facil">Iniciar</button>
+      <div class="seta" id="next-level">&#9654;</div>
     </div>
-    <div class="seta" onclick="trocarNivel(1)">&#9654;</div>
+
+    <div class="explicacao-container">
+      <div class="card-nivel explicacao">
+        <div class="subtitulo">Como funciona o jogo?</div>
+        <div class="descricao">
+          Você vai ouvir acordes e deverá escolher se o acorde é “Maior” (☀️) ou “Menor” (🌙).<br />
+          Cada rodada mostra a pontuação (ex: 3/10), um cronômetro 🕒, e você pode repetir o acorde com o botão 🔁.<br />
+          Ao final do jogo, seu desempenho será exibido.
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="explicacao-container">
-    <div class="card-nivel explicacao">
-      <div class="subtitulo">Como funciona o jogo?</div>
-      <div class="descricao">
-        Você vai ouvir acordes e deverá escolher se o acorde é “Maior” (☀️) ou “Menor” (🌙).<br />
-        Cada rodada mostra a pontuação (ex: 3/10), um cronômetro 🕒, e você pode repetir o acorde com o botão 🔁.<br />
-        Ao final do jogo, seu desempenho será exibido.
-      </div>
+  <div id="game-area" class="jogo" style="display:none;">
+    <div id="question" class="pontuacao">1 / 10</div>
+    <div id="timer-bar" class="progresso">
+      <div id="timer-progress" class="progresso-inner"></div>
     </div>
-  </div>
-
-  <div class="botoes-jogo">
-    <button class="glass-btn">🔁 Repetir Acorde</button>
-    <button class="glass-btn">☀️ Maior</button>
-    <button class="glass-btn">🌙 Menor</button>
+    <div id="timer" class="tempo"><span class="timer-icon">🕒</span> <span id="timer-text">0:00</span></div>
+    <button id="play-sound" class="glass-btn">🔁 Repetir Acorde</button>
+    <div id="options" class="botoes-jogo">
+      <button data-type="Maior" class="glass-btn">☀️ Maior</button>
+      <button data-type="Menor" class="glass-btn">🌙 Menor</button>
+    </div>
+    <p id="feedback"></p>
+    <p id="result"></p>
+    <div id="end-buttons" style="display:none;">
+      <button id="retry-game" class="glass-btn">🔄 Refazer exercício</button>
+      <button id="change-level" class="glass-btn">⚙️ Mudar de nível</button>
+    </div>
   </div>
 </body>
 </html>
