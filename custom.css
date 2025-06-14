@@ -31,22 +31,22 @@
 }
 
 .easy {
-  background-color: #1f5d3e;
+  background-color: #1f5d3e !important;
   color: #fff;
 }
 
 .medium {
-  background-color: #c7791a;
+  background-color: #c7791a !important;
   color: #fff;
 }
 
 .hard {
-  background-color: #a92626;
+  background-color: #a92626 !important;
   color: #fff;
 }
 
 .advanced {
-  background-color: #6d28d9;
+  background-color: #6d28d9 !important;
   color: #fff;
 }
 
@@ -90,6 +90,8 @@
   align-items: center;
   justify-content: center;
   margin: 10px auto;
+  background-color: #facc15;
+  color: #000;
 }
 
 #play-sound img {
