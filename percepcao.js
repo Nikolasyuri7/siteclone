@@ -54,6 +54,8 @@ let context;
 let progressEl;
 let nivelContainerEl;
 let nivelHeadingEl;
+let explicacaoEl;
+let voltarBtn;
 
 function getContext() {
   if (!context) {
@@ -174,17 +176,28 @@ document.addEventListener('DOMContentLoaded', () => {
   progressEl = document.getElementById('timer-progress');
   nivelContainerEl = document.querySelector('.nivel-container');
   nivelHeadingEl = document.querySelector('h2');
+  explicacaoEl = document.querySelector('.explicacao-container');
+  voltarBtn = document.getElementById('btn-voltar');
   const mostrarNiveisBtn = document.getElementById('mostrar-niveis');
   renderLevel();
 
   // Exibe apenas as instruções inicialmente
-  if (nivelContainerEl && nivelHeadingEl && mostrarNiveisBtn) {
+  if (nivelContainerEl && nivelHeadingEl && mostrarNiveisBtn && explicacaoEl && voltarBtn) {
     nivelContainerEl.style.display = 'none';
     nivelHeadingEl.style.display = 'none';
+    voltarBtn.style.display = 'none';
     mostrarNiveisBtn.addEventListener('click', () => {
+      explicacaoEl.style.display = 'none';
       nivelContainerEl.style.display = 'flex';
       nivelHeadingEl.style.display = 'block';
-      mostrarNiveisBtn.style.display = 'none';
+      voltarBtn.style.display = 'inline-block';
+    });
+
+    voltarBtn.addEventListener('click', () => {
+      nivelContainerEl.style.display = 'none';
+      nivelHeadingEl.style.display = 'none';
+      explicacaoEl.style.display = 'block';
+      voltarBtn.style.display = 'none';
     });
   }
 
@@ -229,9 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nivelContainerEl && nivelHeadingEl) {
       nivelContainerEl.style.display = 'flex';
       nivelHeadingEl.style.display = 'block';
-      const btnMostrar = document.getElementById('mostrar-niveis');
-      if (btnMostrar) btnMostrar.style.display = 'none';
     }
+    if (explicacaoEl) explicacaoEl.style.display = 'none';
+    if (voltarBtn) voltarBtn.style.display = 'inline-block';
+    const btnMostrar = document.getElementById('mostrar-niveis');
+    if (btnMostrar) btnMostrar.style.display = 'none';
   });
 
   document.addEventListener('keydown', e => {
