@@ -11,10 +11,10 @@
 <body>
   <nav class="main-nav"><ul><li><a href="index.html">Início</a></li><li><a href="percepcao.html">Percepção</a></li></ul></nav>
   <h1>🎵 Treino de Percepção</h1>
-  <h2>Selecione o nível</h2>
+  <h2 style="display:none;">Selecione o nível</h2>
 
   <div id="intro">
-    <div class="nivel-container">
+    <div class="nivel-container" style="display:none;">
       <div class="seta" id="prev-level">&#9664;</div>
       <div id="nivel-card" class="card-nivel">
         <div id="nivel-badge" class="tag-nivel facil">🎹 Fácil</div>
@@ -36,6 +36,7 @@
           Cada rodada mostra a pontuação (ex: 3/10), um cronômetro 🕒, e você pode repetir o acorde com o botão 🔁.<br />
           Ao final do jogo, seu desempenho será exibido.
         </div>
+        <button id="mostrar-niveis" class="glass-btn">Selecionar nível</button>
       </div>
     </div>
   </div>
