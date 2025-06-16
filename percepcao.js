@@ -52,6 +52,8 @@ let startTime;
 let timerInterval;
 let context;
 let progressEl;
+let nivelContainerEl;
+let nivelHeadingEl;
 
 function getContext() {
   if (!context) {
@@ -170,7 +172,21 @@ function startGame() {
 
 document.addEventListener('DOMContentLoaded', () => {
   progressEl = document.getElementById('timer-progress');
+  nivelContainerEl = document.querySelector('.nivel-container');
+  nivelHeadingEl = document.querySelector('h2');
+  const mostrarNiveisBtn = document.getElementById('mostrar-niveis');
   renderLevel();
+
+  // Exibe apenas as instruções inicialmente
+  if (nivelContainerEl && nivelHeadingEl && mostrarNiveisBtn) {
+    nivelContainerEl.style.display = 'none';
+    nivelHeadingEl.style.display = 'none';
+    mostrarNiveisBtn.addEventListener('click', () => {
+      nivelContainerEl.style.display = 'flex';
+      nivelHeadingEl.style.display = 'block';
+      mostrarNiveisBtn.style.display = 'none';
+    });
+  }
 
   document.getElementById('play-sound').addEventListener('click', () => {
     playChord(currentChord.intervals);
@@ -210,6 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('game-area').style.display = 'none';
     document.getElementById('intro').style.display = 'block';
     document.getElementById('end-buttons').style.display = 'none';
+    if (nivelContainerEl && nivelHeadingEl) {
+      nivelContainerEl.style.display = 'flex';
+      nivelHeadingEl.style.display = 'block';
+      const btnMostrar = document.getElementById('mostrar-niveis');
+      if (btnMostrar) btnMostrar.style.display = 'none';
+    }
   });
 
   document.addEventListener('keydown', e => {
